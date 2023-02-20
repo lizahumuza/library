@@ -1,0 +1,77 @@
+html,body{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: lightblue;
+}
+#library {
+  display: flex;
+  flex-wrap: wrap;
+  border: 1px solid black;
+}
+#newForm{
+  border-radius: 5px;
+  padding: 20px;
+  background-color:#f2f2f2;
+}
+input{
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+
+}
+
+#sub{
+ cursor: pointer; 
+ background-color: rgb(56, 83, 46);
+ color: white;
+ padding: 5px;
+ border: none;
+ border-radius: 5px;
+ justify-content: center;
+}
+.delButton {
+  background-color: red;
+  color: white;
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  float: right;
+  margin-top: 7px;
+}
+
+.change-read-status-button {
+  background-color: blue;
+  color: white;
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  float: right;
+  margin-right: 10px;
+  margin-top: 7px;
+}
+.parent{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border: 1px solid black;
+  border-radius: 4px; 
+  height: 100px;
+  width: 200px;
+  margin: 10px;
+  padding: 10px;
+  background-color: aliceblue;
+}
+#new-book-btn{
+  background-color: rgb(118, 63, 63);
+  color: white;
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
