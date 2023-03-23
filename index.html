@@ -17,25 +17,26 @@
         <form id="newForm" style="display: none;">
         <div>
             <label for="title">TITLE</label>
-            <input type="text" name="title" id="title" >
+            <input type="text" name="title" id="title" required>
         </div>
         <div>
             <label for="author">AUTHOR</label>
-            <input type="text" name="author" id="author">
+            <input type="text" name="author" id="author" required>
         </div>
         <div>
             <label for="pages">PAGES</label>
-            <input type="number" name="pages" id="pages">
+            <input type="number" name="pages" id="pages" required>
         </div>
         <div>
             <label for="read">READ</label>
-            <input type="checkbox" name="status" id="status">
+            <input type="checkbox" name="status" id="status" required>
         </div>
         <div><center><button id="sub" type="submit">ADD BOOK</button></center></div>
     </div>
     </form>
 <script>
     let myLibrary=[]
+  
     function Book(title, author, pages, read) {
     this.title = title;
     this.author = author;
@@ -51,7 +52,7 @@ Book.prototype.changeReadStatus = function () {
     this.read = !this.read;
 }
 
-function addBookToLibrary() {
+      function addBookToLibrary() {
         let title = document.getElementById("title").value;
         let author = document.getElementById("author").value;
         let pages = document.getElementById("pages").value;
@@ -85,14 +86,16 @@ let btn = document.getElementById("new-book-btn")
 btn.addEventListener("click", function () {
           document.getElementById("newForm").style.display = "block";
         });
+
 let form1 = document.getElementById("newForm")
 form1.addEventListener("submit", function (event) {
           event.preventDefault(); 
           addBookToLibrary();
         }); 
+
 let lib= document.getElementById("library")  
 lib.addEventListener("click", function (event) {
-          if (event.target.classList.contains("remove-book-button")) {
+          if (event.target.classList.contains("delButton")) {
             let index = event.target.getAttribute("data-index");
             myLibrary.splice(index, 1);
             displayLibrary();
@@ -106,8 +109,8 @@ lib.addEventListener("click", function (event) {
         });     
         
         
-myLibrary.push(new Book("The Hobbit", "J.R.R. Tolkien", 295, false));
-myLibrary.push(new Book("Harry Potter and the Sorcerer's Stone", "J.K. Rowling", 309, true));
+//myLibrary.push(new Book("The Hobbit", "J.R.R. Tolkien", 295, false));
+//myLibrary.push(new Book("Harry Potter and the Sorcerer's Stone", "J.K. Rowling", 309, true));
 
 displayLibrary();
 

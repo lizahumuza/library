@@ -75,3 +75,11 @@ input{
   margin-top: 10px;
   margin-bottom: 10px;
 }
+input.valid{
+  border: solid black;
+  background-color: aliceblue;
+}
+input.invalid{
+  border: solid red;
+
+}
