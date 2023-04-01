@@ -83,3 +83,6 @@ input.invalid{
   border: solid red;
 
 }
+#new-book-btn:focus + #newForm {
+  display: block;
+}
