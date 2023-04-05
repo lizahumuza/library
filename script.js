@@ -1,21 +1,28 @@
 const myLibrary = [];
 
-function Book(title, author, pages, read) {
+class Book{
+  constructor(title, author, pages, read) {
   this.title = title;
   this.author = author;
   this.pages = pages;
   this.read = read;
-}
+  }
 
-Book.prototype.info = function () {
+  info() {
   return `${this.title} by ${this.author}, ${this.pages} pages , <strong>${
     this.read ? "read" : "not read"
   }</strong>`;
-};
+  }
 
-Book.prototype.changeReadStatus = function () {
+  changeReadStatus() {
   this.read = !this.read;
-};
+  }
+}
+
+const btn = document.getElementById("new-book-btn");
+btn.addEventListener("click", function () {
+  document.getElementById("newForm").style.display = "block";
+});
 
 function addBookToLibrary() {
   const title = document.getElementById("title").value;
@@ -28,6 +35,12 @@ function addBookToLibrary() {
   document.getElementById("newForm").reset();
   document.getElementById("newForm").style.display = "none";
 }
+
+const form = document.getElementById("newForm");
+form.addEventListener("submit", function (event) {
+  event.preventDefault();
+  addBookToLibrary();
+});
 
 function displayLibrary() {
   const libraryDiv = document.getElementById("library");
@@ -47,24 +60,13 @@ function displayLibrary() {
   }
 }
 
-const btn = document.getElementById("new-book-btn");
-btn.addEventListener("click", function () {
-  document.getElementById("newForm").style.display = "block";
-});
-
-const form1 = document.getElementById("newForm");
-form1.addEventListener("submit", function (event) {
-  event.preventDefault();
-  addBookToLibrary();
-});
-
 const lib = document.getElementById("library");
 lib.addEventListener("click", function (event) {
   if (event.target.classList.contains("delButton")) {
     const index = event.target.getAttribute("data-index");
     myLibrary.splice(index, 1);
     displayLibrary();
-  } else if (event.target.classList.contains("change-read-status-button")) {
+  } else (event.target.classList.contains("change-read-status-button")) {
     const index = event.target.getAttribute("data-index");
     myLibrary[index].changeReadStatus();
     displayLibrary();
