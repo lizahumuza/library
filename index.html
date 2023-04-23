@@ -5,16 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>library</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
     <div>
         <h1>MY BOOK LIBRARY</h1>
     </div>
     <div id="library"></div>
-    <button id="new-book-btn" onclick="showForm()">ADD NEW BOOK</button>
+    <button id="new-book-btn">ADD NEW BOOK</button>
     <div class="form">
-        <form id="newForm" style="display: none;">
+        <form id="newForm" class="hidden">
         <div>
             <label for="title">TITLE</label>
             <input type="text" name="title" id="title" required>
@@ -29,7 +29,7 @@
         </div>
         <div>
             <label for="read">READ</label>
-            <input type="checkbox" name="status" id="status" required>
+            <input type="checkbox" name="status" id="status">
         </div>
         <div><center><button id="sub" type="submit">ADD BOOK</button></center></div>
     </div>

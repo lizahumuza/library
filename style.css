@@ -14,6 +14,10 @@ html,body{
   border-radius: 5px;
   padding: 20px;
   background-color:#f2f2f2;
+  
+}
+.hidden{
+  display: none;
 }
 input{
   padding: 12px 20px;

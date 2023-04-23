@@ -9,9 +9,8 @@ class Book{
   }
 
   info() {
-  return `${this.title} by ${this.author}, ${this.pages} pages , <strong>${
-    this.read ? "read" : "not read"
-  }</strong>`;
+    const isRead = this.read ? 'read' : 'not read';
+  return `${this.title} by ${this.author}, ${this.pages} pages , <strong>${isRead}</strong>`;
   }
 
   changeReadStatus() {
@@ -20,8 +19,10 @@ class Book{
 }
 
 const btn = document.getElementById("new-book-btn");
+const form = document.getElementById("newForm");
+
 btn.addEventListener("click", function () {
-  document.getElementById("newForm").style.display = "block";
+  form.classList.remove("hidden");
 });
 
 function addBookToLibrary() {
@@ -31,15 +32,18 @@ function addBookToLibrary() {
   const read = document.getElementById("status").checked;
   const newBook = new Book(title, author, pages, read);
   myLibrary.push(newBook);
+
   displayLibrary();
-  document.getElementById("newForm").reset();
-  document.getElementById("newForm").style.display = "none";
+
+  form.reset();
+  form.classList.add('hidden')
 }
 
-const form = document.getElementById("newForm");
 form.addEventListener("submit", function (event) {
   event.preventDefault();
+
   addBookToLibrary();
+
 });
 
 function displayLibrary() {
@@ -65,11 +69,17 @@ lib.addEventListener("click", function (event) {
   if (event.target.classList.contains("delButton")) {
     const index = event.target.getAttribute("data-index");
     myLibrary.splice(index, 1);
+
     displayLibrary();
-  } else (event.target.classList.contains("change-read-status-button")) {
-    const index = event.target.getAttribute("data-index");
-    myLibrary[index].changeReadStatus();
-    displayLibrary();
+
+  } else {
+    if (event.target.classList.contains("change-read-status-button")) {
+      const index = event.target.getAttribute("data-index");
+      myLibrary[index].changeReadStatus();
+
+      displayLibrary();
+      
+    }
   }
 });
 
