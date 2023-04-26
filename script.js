@@ -1,20 +1,20 @@
 const myLibrary = [];
 
-class Book{
+class Book {
   constructor(title, author, pages, read) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
   }
 
   info() {
-    const isRead = this.read ? 'read' : 'not read';
-  return `${this.title} by ${this.author}, ${this.pages} pages , <strong>${isRead}</strong>`;
+    const isRead = this.read ? "read" : "not read";
+    return `${this.title} by ${this.author}, ${this.pages} pages , <strong>${isRead}</strong>`;
   }
 
   changeReadStatus() {
-  this.read = !this.read;
+    this.read = !this.read;
   }
 }
 
@@ -36,14 +36,13 @@ function addBookToLibrary() {
   displayLibrary();
 
   form.reset();
-  form.classList.add('hidden')
+  form.classList.add("hidden");
 }
 
 form.addEventListener("submit", function (event) {
   event.preventDefault();
 
   addBookToLibrary();
-
 });
 
 function displayLibrary() {
@@ -53,12 +52,12 @@ function displayLibrary() {
     const book = myLibrary[i];
     const bookDiv = document.createElement("div");
     bookDiv.innerHTML = `<div class=parent>
-                       <div class="books">${book.info()}</div>
-                       <div>
-                       <button data-index="${i}" class="delButton">Delete</button>
-                       <button data-index="${i}" class="change-read-status-button">Read Status</button>
-                       </div>
-                       </div>`;
+                          <div class="books">${book.info()}</div>
+                          <div>
+                            <button data-index="${i}" class="delButton">Delete</button>
+                            <button data-index="${i}" class="change-read-status-button">Read Status</button>
+                          </div>
+                        </div>`;
 
     libraryDiv.appendChild(bookDiv);
   }
@@ -71,16 +70,14 @@ lib.addEventListener("click", function (event) {
     myLibrary.splice(index, 1);
 
     displayLibrary();
+  } 
 
-  } else {
-    if (event.target.classList.contains("change-read-status-button")) {
+if (event.target.classList.contains("change-read-status-button")) {
       const index = event.target.getAttribute("data-index");
       myLibrary[index].changeReadStatus();
 
       displayLibrary();
-      
-    }
-  }
+}
 });
 
 displayLibrary();
