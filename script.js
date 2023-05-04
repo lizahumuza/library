@@ -10,6 +10,7 @@ class Book {
 
   info() {
     const isRead = this.read ? "read" : "not read";
+
     return `${this.title} by ${this.author}, ${this.pages} pages , <strong>${isRead}</strong>`;
   }
 
@@ -31,6 +32,7 @@ function addBookToLibrary() {
   const pages = document.getElementById("pages").value;
   const read = document.getElementById("status").checked;
   const newBook = new Book(title, author, pages, read);
+
   myLibrary.push(newBook);
 
   displayLibrary();
@@ -48,9 +50,11 @@ form.addEventListener("submit", function (event) {
 function displayLibrary() {
   const libraryDiv = document.getElementById("library");
   libraryDiv.textContent = "";
+
   for (let i = 0; i < myLibrary.length; i++) {
     const book = myLibrary[i];
     const bookDiv = document.createElement("div");
+
     bookDiv.innerHTML = `<div class=parent>
                           <div class="books">${book.info()}</div>
                           <div>
@@ -64,20 +68,21 @@ function displayLibrary() {
 }
 
 const lib = document.getElementById("library");
+
 lib.addEventListener("click", function (event) {
   if (event.target.classList.contains("delButton")) {
     const index = event.target.getAttribute("data-index");
     myLibrary.splice(index, 1);
 
     displayLibrary();
-  } 
+  }
 
-if (event.target.classList.contains("change-read-status-button")) {
+  if (event.target.classList.contains("change-read-status-button")) {
       const index = event.target.getAttribute("data-index");
       myLibrary[index].changeReadStatus();
 
       displayLibrary();
-}
+  }
 });
 
 displayLibrary();
